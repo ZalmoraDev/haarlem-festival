@@ -15,36 +15,29 @@
 ![Docker](https://img.shields.io/badge/docker-0db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-38B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![NGINX](https://img.shields.io/badge/nginx-009639.svg?style=for-the-badge&logo=nginx&logoColor=white)  
-🎪 Festival showcase & ticket purchasing platform. 🐘 Built with PHP, JavaScript & PostgreSQL
-
-# Running the Project
+🎪 Festival showcase & ticket purchasing platform. 🐘 Built with PHP, JavaScript & PostgreSQL     
+ℹ️ Solo continuation of school group project, due to disagreements.
 
 ## Prerequisites
-
 - **Docker CLI** & **Docker Compose** installed on your system
 - **Node.js** & **npm** (for building assets)
 - **Composer** (for PHP dependencies)
 
 ## Build and Run
-
 1. Clone the repository.
 2. Navigate to the project directory.
 3. Build assets with npm:
    ```bash
    npm install
    npm run build
-   ```
 4. Install PHP dependencies with composer:
    ```bash
    composer install
-   ```
 5. Start the project:
    ```bash
    docker-compose up -d
-   ```
 
 ## Usage
-
 - Website: http://localhost/
 - pgAdmin: http://localhost:8080, use credentials found in `compose.yml -> pgadmin`:
     - Site login:
@@ -53,22 +46,7 @@
     - Server connection (Project->HaarlemFestival:
         - **Password:** database123
 
-<details>
-<summary><b>Accessing Database Tables</b></summary>
-
-To view table data in pgAdmin:
-
-1. Navigate down through the tree: **Project** → **HaarlemFestival** → **Databases** → **HaarlemFestival** → **Schemas
-   ** → **public** → **Tables**
-2. Click to the table you want to view (e.g., `users`)
-3. Click the **"All Rows"** button in the top toolbar to display all table data (middle section)
-
-![Database Access](docs/db-access.png)
-
-</details>
-
 ## Stop / Cleanup
-
 * Stop containers:
    ```bash
    docker-compose stop
@@ -76,10 +54,7 @@ To view table data in pgAdmin:
     ```bash
    docker-compose down -v
 
-# Features
-
 ## Technologies Used
-
 - Docker
 - Nginx 1.29
 - PHP: 8.5-fpm
