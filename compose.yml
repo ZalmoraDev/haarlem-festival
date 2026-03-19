@@ -1,0 +1,77 @@
+name: haarlem-festival
+
+volumes:
+  postgres_vol: { }
+  stripe_config: { }
+
+services:
+  nginx:
+    container_name: hf-nginx
+    restart: no
+    image: nginx:1.29
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - .:/var/www
+    depends_on:
+      - php
+      - postgres
+
+  php:
+    container_name: hf-php
+    build:
+      context: .
+      dockerfile: php.dockerfile # image: php:8.5-fpm
+    restart: no
+    volumes:
+      - .:/var/www
+    env_file:
+      - ./.env
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: hf-postgres
+    restart: no
+    image: postgres:18
+    environment:
+      POSTGRES_DB: HaarlemFestival
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: database123
+    volumes:
+      - postgres_vol:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./database/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    container_name: hf-pgadmin
+    restart: no
+    image: dpage/pgadmin4:9
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@local.dev
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    volumes:
+      - ./database/servers.json:/pgadmin4/servers.json
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+
+  stripe:
+    # TODO: Revise usage & get new key
+    container_name: hf-stripe
+    image: stripe/stripe-cli:latest
+    restart: no
+    volumes:
+      - stripe_config:/root/.config/stripe
+    command: >
+      listen 
+      --api-key ${STRIPE_SECRET_KEY}
+      --forward-to festival-nginx/api/webhook/stripe
+    env_file:
+      - ./.env
+    depends_on:
+      - php

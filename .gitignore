@@ -1,0 +1,8 @@
+# Generated
+.env
+.idea/
+node_modules/
+vendor/
+
+# Tailwind generation output (run npm <dev>/<build> to regenerate)
+public/assets/styles/output.css

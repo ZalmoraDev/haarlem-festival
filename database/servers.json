@@ -1,0 +1,14 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "HaarlemFestival",
+      "Group": "Project",
+      "Host": "postgres",
+      "Port": 5432,
+      "MaintenanceDB": "HaarlemFestival",
+      "Username": "appuser",
+      "SSLMode": "prefer",
+      "SavePassword": true
+    }
+  }
+}

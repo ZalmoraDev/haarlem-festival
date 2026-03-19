@@ -1,0 +1,23 @@
+{
+  "authors": [
+    {
+      "name": "Stef Visser",
+      "homepage": "https://github.com/ZalmoraDev",
+      "role": "Developer & Code Quality Reviewer"
+    }
+  ],
+  "name": "zalmoradev/haarlemfestival",
+  "description": "Festival showcase & ticket purchasing platform",
+  "type": "project",
+  "require": {
+    "vlucas/phpdotenv": "^5",
+    "nikic/fast-route": "^1",
+    "phpmailer/phpmailer": "^7",
+    "stripe/stripe-php": "^19"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\": "app"
+    }
+  }
+}

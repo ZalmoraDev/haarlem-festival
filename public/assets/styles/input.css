@@ -1,0 +1,108 @@
+@import "tailwindcss";
+/* https://tailwindcss.com/docs/colors for color reference */
+
+:root {
+    font-family: "montserrat", sans-serif;
+
+    padding: 0;
+    border: 0;
+    margin: 0;
+
+    /* Firefox scrollbar, doesn't use Webkit */
+    scrollbar-width: thin;
+    scrollbar-color: #d4d4d4 #f5f5f5; /* thumb track neutral-300 & neutral-100 */
+}
+
+/* Custom scrollbar styles for light theme */
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f5f5f5; /* neutral-100 */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d4d4d4; /* neutral-300 */
+    border-radius: 10px;
+    border: 2px solid #f5f5f5; /* neutral-100 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a3a3a3; /* neutral-400 */
+}
+
+@font-face {
+    font-family: "montserrat";
+    src: url("../fonts/montserrat-medium.ttf") format("truetype");
+}
+
+@layer components {
+    .fest-body {
+        @apply flex min-h-screen max-w-full bg-neutral-100;
+    }
+
+    .fest-main {
+        @apply flex flex-1 flex-col w-full max-w-full justify-center items-center overflow-y-auto;
+    }
+
+    .fest-container {
+        @apply flex flex-col justify-center items-center gap-6 rounded-3xl p-10 border bg-white border-neutral-200;
+    }
+
+    .fest-input {
+        @apply p-2 rounded-xl border-2 bg-white border-neutral-200 text-neutral-500;
+    }
+
+    .fest-btn {
+        @apply cursor-pointer w-full px-4 py-2 rounded-xl border-neutral-200 text-sm text-black bg-neutral-200 transition hover:brightness-75;
+    }
+
+
+
+    .fest-nav-item {
+        @apply flex items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 transition-colors mb-0;
+    }
+
+    .fest-nav-item-icon {
+        @apply w-6 h-6 shrink-0;
+    }
+
+    .fest-nav-item-text {
+        @apply whitespace-nowrap opacity-0 group-hover:opacity-100 peer-checked:opacity-100 transition-opacity duration-300;
+    }
+
+    .fest-nav-sidebar-text {
+        @apply whitespace-nowrap opacity-0 group-hover:opacity-100 peer-checked:opacity-100 transition-opacity duration-300;
+    }
+
+    .fest-nav-category {
+        @apply flex items-center p-3 pt-3 rounded-md font-semibold text-sm text-neutral-400 relative mb-0;
+    }
+
+    .fest-nav-category-full {
+        @apply opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute left-3 top-3 whitespace-nowrap;
+    }
+
+    .fest-nav-category-short {
+        @apply group-hover:opacity-0 transition-opacity duration-300 w-6 text-center shrink-0;
+    }
+
+    @theme {
+        /* source: #ff0000 (Not the same as Tailwind red) */
+        --color-dance-50: #fff0f0;
+        --color-dance-100: #ffdddd;
+        --color-dance-200: #ffc0c0;
+        --color-dance-300: #ff9494;
+        --color-dance-400: #ff5757;
+        --color-dance-500: #ff2323;
+        --color-dance-600: #ff0000;
+        --color-dance-700: #d70000;
+        --color-dance-800: #b10303;
+        --color-dance-900: #920a0a;
+        --color-dance-950: #500000;
+    }
+}

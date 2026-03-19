@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "tailwindcss": "^4"
+  },
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./public/assets/styles/input.css -o ./public/assets/styles/output.css --watch",
+    "build": "npx @tailwindcss/cli -i ./public/assets/styles/input.css -o ./public/assets/styles/output.css --minify"
+  }
+}
